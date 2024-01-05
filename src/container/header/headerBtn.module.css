@@ -1,0 +1,20 @@
+.btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #196534;
+}
+
+.share {
+  margin-left: 1rem;
+}

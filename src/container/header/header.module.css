@@ -1,0 +1,14 @@
+.container {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: hsl(141, 60%, 25%);
+  color: #fff;
+}
+
+.btn-wrap {
+  display: flex;
+  width: 150px;
+}

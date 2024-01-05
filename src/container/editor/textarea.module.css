@@ -1,0 +1,8 @@
+.textarea {
+  width: calc(100% - 32px);
+  height: calc(100% - 72.9px - 32px);
+  border: none;
+  resize: none;
+  padding: 8px 12px;
+  margin: 16px;
+}
