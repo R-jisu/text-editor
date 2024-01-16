@@ -38,7 +38,6 @@ const TextareaContainer = () => {
     } else {
       //Todo cursor 위치가 이상함. => window.getSelection으로 캐럿 조절
 
-      //Todo shift 같은 특수키들 처리가 필요함 => 함수처리
       const obj: { [key: string]: number } = {
         Shift: 1,
         Backspace: 2,
