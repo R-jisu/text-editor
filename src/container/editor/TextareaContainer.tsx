@@ -1,18 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Textarea from "./Textarea";
 import styles from "./textarea.module.css";
 import { useSelectedElementStore } from "@/store/useSelectedElement";
-import { makeElement } from "@/utils/makeElement";
 
 const TextareaContainer = () => {
   const textareaDivRef = useRef<HTMLDivElement>(null);
-  const element = useSelectedElementStore((state) => state.element);
-  const setElement = useSelectedElementStore((state) => state.setElement);
-  const setParentElement = useSelectedElementStore(
-    (state) => state.setParentElement
-  );
+  const tool = useSelectedElementStore((state) => state.tool);
 
   //Todo 로직 다시 생각하기
   function onInput(e: React.KeyboardEvent<HTMLDivElement>) {
