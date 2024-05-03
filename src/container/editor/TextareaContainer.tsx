@@ -24,25 +24,30 @@ const TextareaContainer = () => {
     const current = selection?.getRangeAt(0).startContainer.parentElement;
     if (e.key == "Enter") {
       e.preventDefault();
+      console.log(range);
       const newParagraph = document.createElement("p");
       newParagraph.innerHTML = "<br>";
+      //fix 3줄이 있을 때 첫번째 줄로 가서 enter 입력 시 맨마지막에 p를 추가함
+      //enter 입력 전 커서의 다음으로 추가되도록 해야함
       textareaDivRef.current?.appendChild(newParagraph);
       range?.setStart(newParagraph, 0);
       range?.collapse(true);
       selection?.removeAllRanges();
       selection?.addRange(range);
+    } else if (!특수키모음[e.key]) {
+      console.log(current?.localName);
+
+      if (tool === "B" && current?.localName !== "strong") {
+        e.preventDefault();
+        const newStrong = document.createElement("strong");
+        newStrong.innerText = e.key;
+        range.insertNode(newStrong);
+        range?.setStart(newStrong, 1);
+        range?.collapse(true);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
     }
-    // else if (!특수키모음[e.key]) {
-    //   if (tool === "B" && current?.localName !== "strong") {
-    //     const newStrong = document.createElement("strong");
-    //     newStrong.innerHTML = "<br>";
-    //     range.insertNode(newStrong);
-    //     range?.setStart(newStrong, 0);
-    //     range?.collapse(true);
-    //     selection?.removeAllRanges();
-    //     selection?.addRange(range);
-    //   }
-    // }
   }
 
   return (
