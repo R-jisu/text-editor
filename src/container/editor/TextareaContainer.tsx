@@ -15,7 +15,8 @@ const TextareaContainer = () => {
   );
 
   //Todo 로직 다시 생각하기
-  function onInput(e: any) {
+  function onInput(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.nativeEvent.isComposing) return;
     const selection = window.getSelection();
     const range = selection?.getRangeAt(0);
     if (!selection || !range) {
