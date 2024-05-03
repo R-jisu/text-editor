@@ -1,26 +1,29 @@
 import { useSelectedElementStore } from "@/store/useSelectedElement";
 import Btn from "./Btn";
 import styles from "@/container/editor/toolbar.module.css";
-import { makeElement } from "@/utils/makeElement";
 import { ForwardedRef, forwardRef } from "react";
 
 const FormatBtn = forwardRef(
   ({ text }: { text: string }, ref: ForwardedRef<HTMLButtonElement>) => {
-    const element = useSelectedElementStore((state) => state.element);
-    const setElement = useSelectedElementStore((state) => state.setElement);
+    const tool = useSelectedElementStore((state) => state.tool);
+    const setTool = useSelectedElementStore((state) => state.setTool);
 
     function handleClick() {
-      if (element?.nodeName !== text && typeof ref !== "function") {
-        ref!.current!.className = `${styles["btn-icon"]} ${styles["btn-click"]}`;
-        //   setElement(makeElement("span", parentElement));
+      if (tool !== text) {
+        setTool(text);
+      } else {
+        setTool("");
       }
     }
+
     return (
       <Btn
         text={text}
         ref={ref}
         onclick={handleClick}
-        styles={styles["btn-icon"]}
+        styles={`${styles["btn-icon"]} ${
+          text === tool ? styles["btn-click"] : ""
+        }`}
       />
     );
   }
